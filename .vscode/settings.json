@@ -10,8 +10,12 @@
         "Semana",
         "bgcolor",
         "eventos",
+        "fondo",
+        "inicio",
         "os",
         "rango",
-        "regalo"
+        "regalo",
+        "requerido",
+        "titulo"
     ]
 }
