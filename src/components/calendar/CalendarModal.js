@@ -10,9 +10,9 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { uiCloseModalAction } from '../../actions/uiAction';
 import {
-	eventAddNewEvent,
+	eventStartAddNew,
 	eventClearActiveNote,
-	eventUpdated,
+	eventStartUpdate,
 } from '../../actions/eventsActions';
 
 const customStyles = {
@@ -116,18 +116,9 @@ export const CalendarModal = () => {
 			return setTitleValid(false);
 		}
 		if (activeEvent) {
-			dispatch(eventUpdated(formValues));
+			dispatch(eventStartUpdate(formValues));
 		} else {
-			dispatch(
-				eventAddNewEvent({
-					...formValues,
-					id: new Date().getTime(),
-					user: {
-						_id: 1234,
-						name: 'Gerson',
-					},
-				})
-			);
+			dispatch(eventStartAddNew(formValues));
 		}
 
 		setTitleValid(true);

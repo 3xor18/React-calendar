@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+import React, {
+	useEffect,
+	useState,
+} from 'react';
 import {
 	Calendar,
 	momentLocalizer,
@@ -16,7 +19,10 @@ import {
 	useSelector,
 } from 'react-redux';
 import { uiOpenModalAction } from '../../actions/uiAction';
-import { eventSetActive } from '../../actions/eventsActions';
+import {
+	eventSetActive,
+	eventStartLoading,
+} from '../../actions/eventsActions';
 import { AddNewFab } from '../ui/AddNewFab';
 import { DeleteEventFab } from '../ui/DeleteEventFab';
 import { eventClearActiveNote } from '../../actions/eventsActions';
@@ -25,6 +31,9 @@ moment.locale('es');
 const localizer = momentLocalizer(moment);
 
 export const CalendarScreen = () => {
+	const { uid } = useSelector(
+		(state) => state.auth
+	);
 	const { activeEvent } = useSelector(
 		(state) => state.calendar
 	);
@@ -32,6 +41,10 @@ export const CalendarScreen = () => {
 	const { events } = useSelector(
 		(state) => state.calendar
 	);
+
+	useEffect(() => {
+		dispatch(eventStartLoading());
+	}, [dispatch]);
 
 	const [lastView, setLastView] = useState(
 		localStorage.getItem('lastView') || 'month'
@@ -63,7 +76,10 @@ export const CalendarScreen = () => {
 		inSelect
 	) => {
 		const style = {
-			backgroundColor: '#367CF7',
+			backgroundColor:
+				uid === event.user._id
+					? '#367CF7'
+					: '#465660',
 			borderRadius: '0px',
 			opacity: 0.8,
 			display: 'block',

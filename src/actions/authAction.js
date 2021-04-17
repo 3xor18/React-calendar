@@ -4,6 +4,7 @@ import {
 	fetchSinToken,
 } from '../helpers/fecth';
 import { types } from '../types/types';
+import { eventLogOut } from './eventsActions';
 
 export const startLogin = (email, password) => {
 	return async (dispatch) => {
@@ -119,6 +120,7 @@ const checkingFinish = () => ({
 export const starLogOut = () => {
 	return (dispatch) => {
 		localStorage.clear();
+		dispatch(eventLogOut());
 		dispatch(logOut());
 	};
 };
