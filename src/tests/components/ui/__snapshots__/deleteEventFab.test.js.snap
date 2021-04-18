@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test en <DeleteEventFab /> match con snapshot 1`] = `
+<button
+  className="btn btn-danger fab-danger"
+  onClick={[Function]}
+>
+  <i
+    className="fa fa-trash"
+  />
+  <span
+    className=""
+  >
+    Borrar Evento
+  </span>
+</button>
+`;

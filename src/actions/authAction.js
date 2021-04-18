@@ -30,7 +30,6 @@ export const startLogin = (email, password) => {
 				})
 			);
 		} else {
-			console.log(body.error);
 			let error;
 			if (body.errors?.email)
 				error = body.errors.email.msg;
@@ -69,7 +68,6 @@ export const startRegister = (
 				'token-init-date',
 				new Date().getTime()
 			);
-			console.log(body.user);
 			dispatch(
 				login({
 					uid: body.user._id,

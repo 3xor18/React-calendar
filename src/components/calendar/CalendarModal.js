@@ -144,6 +144,7 @@ export const CalendarModal = () => {
 			<hr />
 			<form
 				className="container"
+				id="formulario"
 				onSubmit={handleSubmit}
 			>
 				<div className="form-group">
